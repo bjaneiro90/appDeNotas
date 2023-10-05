@@ -5,7 +5,7 @@ import { Footer } from './components/footer'
 import { HomePage } from './pages/HomePage'
 import { RegisterPage } from './pages/RegisterPage'
 import { LoginPage } from './pages/LoginPage'
-import { NewNotePage } from './pages/NewNotePage'
+import { NotePage } from './pages/NotePage'
 import { NoteByID } from './pages/NoteByID'
 import { Categories } from './pages/Categories'
 import { NotFoundPage } from './pages/NotFoundPage'
@@ -20,7 +20,7 @@ function App() {
           <Route path="/" element={<HomePage/>}/>
           <Route path="/users" element={<RegisterPage/>} />
           <Route path="/users/login" element={<LoginPage/>} />
-          <Route path="/notes" element={<NewNotePage/>} />
+          <Route path="/notes" element={<NotePage/>} />
           <Route path="/notes/:id" element={<NoteByID/>} />
           <Route path="/category" element={<Categories/>} />
           <Route path="*" element={<NotFoundPage/>} />

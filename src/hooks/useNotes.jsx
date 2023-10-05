@@ -3,7 +3,7 @@ import { getAllNotesService } from "../services";
 
 const useNotes = () => {
     const [notes, setNotes] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
     useEffect(() => {
@@ -25,7 +25,13 @@ const useNotes = () => {
         loadNotes();
     }, [])
 
-    return {notes, loading, error}
+    const addNote = (note) => {
+        setNotes([
+            note,
+            ...notes]);
+    } 
+
+    return {notes, loading, error, addNote}
 }
 
 export default useNotes

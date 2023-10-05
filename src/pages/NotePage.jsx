@@ -6,16 +6,18 @@ import { NewNote } from "../components/NewNote";
 import { NoteList } from "../components/NoteList";
 
 
-export const HomePage = () => {
-    const {notes, loading, error} = useNotes();
+export const NotePage = () => {
+    const {notes, loading, error, addNote} = useNotes();
     const {user} = useContext(AuthContext);
 
     if(loading) return <p>Carregando Notas</p>
+    
+    
 
 
     return <section>
-        <h1>Welcome Page</h1>
-        {user ? <NewNote /> : null}
+        <h1>Note Page</h1>
+        {user ? <NewNote addNote={addNote} /> : null}
         
         <NoteList notes={notes}/>
     </section>
