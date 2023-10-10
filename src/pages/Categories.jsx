@@ -6,9 +6,7 @@ export const Categories = () => {
 
     if(loading) return <p>carregando categorias</p>
     if(error) return <p>{error}</p>
-
-    console.log(notes)
-   
+ 
     return (
 
         <section>

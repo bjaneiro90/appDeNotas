@@ -9,6 +9,7 @@ export const NewNote = ({addNote}) => {
     const [title, setTitle] = useState('')
     const [text, setText] = useState('')
     const [category_id, setCategory_id] = useState('')
+    const [image,setImage] = useState()
    
 
     const handleForm = async(e) => {
@@ -21,6 +22,8 @@ export const NewNote = ({addNote}) => {
             const note = await sendNoteService({title, text, category_id, token})
 
             addNote(note)
+            e.target.reset()
+            setImage(null)
         } catch (error) {
             setError(error.message)
         } finally {
@@ -45,7 +48,8 @@ export const NewNote = ({addNote}) => {
         </fieldset>
         <fieldset>
             <label htmlFor="image">Image (optional)</label>
-            <input type="file" id="image" name="image" accept="image/*" />
+            <input type="file" id="image" name="image" accept="image/*" onChange={(e) => setImage(e.target.files[0])} />
+            {image ? <figure><img src={URL.createObjectURL(image)} alt="Preview" style={{width: '100px'}}/></figure>: null }
         </fieldset>
         <button>Send Note</button>
         {sending ? <p>Sending Note</p> : null }

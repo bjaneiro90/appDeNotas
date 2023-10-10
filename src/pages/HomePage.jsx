@@ -15,8 +15,5 @@ export const HomePage = () => {
 
     return <section>
         <h1>Welcome Page</h1>
-        {user ? <NewNote /> : null}
-        
-        <NoteList notes={notes}/>
     </section>
 }

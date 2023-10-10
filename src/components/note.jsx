@@ -1,15 +1,42 @@
+import { useContext, useState } from "react"
 import { Link } from "react-router-dom"
+import { AuthContext } from "../context/AuthContext"
+import { deleteNoteService } from "../services"
 
-export const Note = ({notes}) => {
+export const Note = ({notes, removeNote}) => {
+
+    
+    const {user, token} = useContext(AuthContext)
+    const [error, setError] = useState("")
+    console.log(user)
+    console.log
+
+    const deleteNote = async (id) => {
+        try {
+            await deleteNoteService({id, token})
+            removeNote(id)
+        } catch (error) {
+            setError(error.message)
+        }
+
+    }
+
+
     return (<article>
         <p>{notes.title}</p>
 
         {notes.image ? <img src={`${import.meta.env.VITE_APP_BACKEND}`}/> : null}
-        {notes.text}
+        {notes.user_id}
         <p>
-            by {notes.id} on {""} <Link to={`/notes/${notes.id}`}> 
-        {new Date(notes.created_at).toLocaleString()}
+            by {notes.user_id} on {""} <Link to={`/notes/${notes.id}`}> 
+        
         </Link>
         </p>
+        {user && user.id === notes.user_id ? (
+        <section>
+        <button onClick={() => {if(window.confirm("Are you sure?")) deleteNote(notes.id)}}>Delete</button>
+        {error ? <p>{error}</p> : null}
+        </section>
+        ) : null}
     </article>)
 }

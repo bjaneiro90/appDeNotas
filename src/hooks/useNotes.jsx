@@ -16,6 +16,7 @@ const useNotes = () => {
                 setNotes(data);
     
             } catch (error) {
+    
                 setError(error.message);
             }
             finally {
@@ -31,7 +32,11 @@ const useNotes = () => {
             ...notes]);
     } 
 
-    return {notes, loading, error, addNote}
+    const removeNote = (id) => {
+        setNotes(notes.filter((note) => note.id !== id))
+    }
+
+    return {notes, loading, error, addNote, removeNote}
 }
 
 export default useNotes

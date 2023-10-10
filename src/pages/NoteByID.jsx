@@ -9,7 +9,7 @@ export const NoteByID = () => {
     const {note, loading,error} = useNote(id)
 
     if(loading) return <p>carregando notas</p>
-    if(error) return <ErrorMessage message={error} />
+    
 
     return (
 
