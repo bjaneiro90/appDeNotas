@@ -9,7 +9,7 @@ export const Note = ({notes, removeNote}) => {
     const {user, token} = useContext(AuthContext)
     const [error, setError] = useState("")
     console.log(user)
-    console.log
+    console.log(notes)
 
     const deleteNote = async (id) => {
         try {
@@ -23,15 +23,12 @@ export const Note = ({notes, removeNote}) => {
 
 
     return (<article>
-        <p>{notes.title}</p>
+        <Link to={`/notes/${notes.id}`}> 
+            <p>{notes.title}</p>
+        </Link>
+        
 
         {notes.image ? <img src={`${import.meta.env.VITE_APP_BACKEND}`}/> : null}
-        {notes.user_id}
-        <p>
-            by {notes.user_id} on {""} <Link to={`/notes/${notes.id}`}> 
-        
-        </Link>
-        </p>
         {user && user.id === notes.user_id ? (
         <section>
         <button onClick={() => {if(window.confirm("Are you sure?")) deleteNote(notes.id)}}>Delete</button>

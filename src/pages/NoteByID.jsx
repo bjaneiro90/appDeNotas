@@ -1,21 +1,30 @@
-import { useParams } from "react-router-dom"
-import useNote from "../hooks/useNote"
 import { ErrorMessage } from "../components/errorMessage"
-import { Note } from "../components/Note"
+import { useContext } from "react"
+import { AuthContext } from "../context/AuthContext"
+import useNote from "../hooks/useNote"
+import { useParams } from "react-router-dom"
 
-export const NoteByID = () => {
-    const {id} = useParams()
+export function NoteByID () {
 
-    const {note, loading,error} = useNote(id)
-
-    if(loading) return <p>carregando notas</p>
+    let {id}= useParams()
     
 
-    return (
+    const {note, loading, error} = useNote(id)
+    const {user} = useContext(AuthContext);
+    if(loading) return <p>Carregando Notas</p>
+    if(error) return ErrorMessage
 
+    console.log(note)
+
+
+ 
+    return (
         <section>
-            <h1>Notas from {note.id}</h1>
-            <Note note={note}/>
+
+        {user ? <h2>My Latest Notes</h2> :  <h2>Global Notes</h2>}
+
+    
+
         </section>
     )
 } 
