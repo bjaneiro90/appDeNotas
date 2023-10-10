@@ -1,41 +1,42 @@
 import { useContext, useState } from "react"
-import { Link } from "react-router-dom"
 import { AuthContext } from "../context/AuthContext"
 import { deleteNoteService } from "../services"
+import { useNavigate } from "react-router-dom"
 
-export const Note = ({notes, removeNote}) => {
+export const NoteId = ({notes, removeNote}) => {
 
-    
-    const {user, token} = useContext(AuthContext)
+    const {user,token} = useContext(AuthContext)
     const [error, setError] = useState("")
+    const navigate = useNavigate()
 
 
     const deleteNote = async (id) => {
         try {
             await deleteNoteService({id, token})
-            removeNote(id)
+            if(removeNote) {
+                removeNote(id)
+            } else {
+                navigate("/")
+            }
         } catch (error) {
             setError(error.message)
         }
 
     }
 
+    return <article>
 
-    return (<article>
-        <Link to={`/notes/${notes.id}`}> 
-            <p>{notes.title}</p>
-        </Link>
+        <h2>{notes.title}</h2>
 
-        
+        <p>{notes.text}</p>
 
-        {notes.image ? <img src={`${import.meta.env.VITE_APP_BACKEND}`}/> : null}
-        {notes.user_id}
-
+        <p>Created by User Nº{notes.user_id} on {new Date(notes.dateCreate).toLocaleString()} </p>
         {user && user.id === notes.user_id ? (
         <section>
         <button onClick={() => {if(window.confirm("Are you sure?")) deleteNote(notes.id)}}>Delete</button>
         {error ? <p>{error}</p> : null}
         </section>
         ) : null}
-    </article>)
+
+    </article>
 }

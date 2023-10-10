@@ -19,17 +19,17 @@ export const getAllNotesService = async () => {
 
 
 
-export const getSingleNoteService = async ( id, {title, text, dateCreate, category}) => {
-    const response = fetch(`${import.meta.env.VITE_APP_BACKEND}/notes/${id}`, {
+export const getSingleNoteService = async (id) => {
+    const response = await fetch(`${import.meta.env.VITE_APP_BACKEND}/notes/${id}`, {
         method: "GET",
         headers: {
             Authorization: token,
-            'Content-Type': 'application/json'
         },
-        body: JSON.stringify({title, text, dateCreate, category})
     });
-
+    
     const json = await response.json();
+    
+    
 
     if(!response.ok) {
         throw new Error(json.message);
