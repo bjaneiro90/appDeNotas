@@ -18,10 +18,9 @@ export const NewNote = ({addNote}) => {
         try {
             setSending(true);
 
-            
-            const note = await sendNoteService({title, text, category_id, token})
-
-            addNote(note)
+            const data = new FormData(e.target)
+            //const note = await sendNoteService(data,token)
+            addNote(data, token)
             e.target.reset()
             setImage(null)
         } catch (error) {
@@ -44,7 +43,7 @@ export const NewNote = ({addNote}) => {
         </fieldset>
         <fieldset>
             <label htmlFor="number">Category</label>
-            <input type="number" id="number" name="number" required onChange={(e) => setCategory_id(e.target.value)}/>
+            <input type="number" id="number" name="category_id" required onChange={(e) => setCategory_id(e.target.value)}/>
         </fieldset>
         <fieldset>
             <label htmlFor="image">Image (optional)</label>

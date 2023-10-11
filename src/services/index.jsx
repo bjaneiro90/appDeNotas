@@ -96,14 +96,13 @@ export const getMyDataService = async ({token}) => {
 }
 
 
-export const sendNoteService = async ({title, text, category_id, token}) => {
+export const sendNoteService = async (data, token) => {
     const response = await fetch(`${import.meta.env.VITE_APP_BACKEND}/notes`, {
         method: 'POST',
         headers: {
             Authorization: token,
-            'Content-Type': 'application/json'
         },
-        body: JSON.stringify({title,text,category_id})
+        body: data
     })
 
     const json = await response.json();
@@ -122,6 +121,24 @@ export const deleteNoteService = async ({id, token}) => {
         headers: {
             Authorization: token
         }
+    });
+
+    const json = await response.json();
+
+    if(!response.ok) {
+        throw new Error(json.message)
+    }
+}
+
+
+export const editeNoteService = async ({id, token, title, text, category_id}) => {
+    const response = await fetch(`${import.meta.env.VITE_APP_BACKEND}/notes/${id}`, {
+        method: "PUT",
+        headers: {
+            Authorization: token,
+            'Content-Type': 'application/json'
+        }, 
+        body: JSON.stringify({title,text,category_id})
     });
 
     const json = await response.json();

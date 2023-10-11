@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 import { AuthContext } from "../context/AuthContext"
-import { deleteNoteService } from "../services"
+import { deleteNoteService, editeNoteService } from "../services"
 import { useNavigate } from "react-router-dom"
 
 export const NoteId = ({notes, removeNote}) => {
@@ -21,10 +21,12 @@ export const NoteId = ({notes, removeNote}) => {
         } catch (error) {
             setError(error.message)
         }
+}
 
-    }
+    
 
-    return <article>
+
+    return ( <article>
 
         <h2>{notes.title}</h2>
 
@@ -35,8 +37,13 @@ export const NoteId = ({notes, removeNote}) => {
         <section>
         <button onClick={() => {if(window.confirm("Are you sure?")) deleteNote(notes.id)}}>Delete</button>
         {error ? <p>{error}</p> : null}
+        <button onClick={() => {if(window.confirm("Are you sure?")) editNote(notes.id)}}>Edit </button>
+        {error ? <p>{error}</p> : null}
         </section>
         ) : null}
 
+
     </article>
+    )
+
 }

@@ -29,7 +29,7 @@ export const Note = ({notes, removeNote}) => {
         
 
         {notes.image ? <img src={`${import.meta.env.VITE_APP_BACKEND}`}/> : null}
-        {notes.user_id}
+    
 
         {user && user.id === notes.user_id ? (
         <section>

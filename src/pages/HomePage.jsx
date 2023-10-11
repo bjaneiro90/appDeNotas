@@ -4,16 +4,16 @@ import useNotes from "../hooks/useNotes"
 import { AuthContext } from "../context/AuthContext";
 import { NewNote } from "../components/NewNote";
 import { NoteList } from "../components/NoteList";
+import { useNavigate } from "react-router-dom";
 
 
 export const HomePage = () => {
-    const {notes, loading, error} = useNotes();
-    const {user} = useContext(AuthContext);
 
-    if(loading) return <p>Carregando Notas</p>
+
+    
 
 
     return <section>
-        <h1>Welcome Page</h1>
+         <h2>Global Notes</h2>
     </section>
 }
