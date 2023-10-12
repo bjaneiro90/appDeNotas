@@ -1,9 +1,9 @@
 import { useContext, useState } from "react"
 import { AuthContext } from "../context/AuthContext"
-import { deleteNoteService, editeNoteService } from "../services"
+import { deleteNoteService,updateNoteService} from "../services"
 import { useNavigate } from "react-router-dom"
 
-export const NoteId = ({notes, removeNote}) => {
+export const NoteId = ({notes, removeNote, refreshNote}) => {
 
     const {user,token} = useContext(AuthContext)
     const [error, setError] = useState("")
@@ -23,6 +23,23 @@ export const NoteId = ({notes, removeNote}) => {
         }
 }
 
+
+    const UpdateNote = async (note,id) => {
+        try {
+            await updateNoteService({note,token})
+            if(refreshNote) {
+                refreshNote(note,id)
+            } else {
+                navigate("/")
+            }
+
+    } catch (error) {
+        setError(error.message)
+
+    }
+}
+
+
     
 
 
@@ -37,7 +54,7 @@ export const NoteId = ({notes, removeNote}) => {
         <section>
         <button onClick={() => {if(window.confirm("Are you sure?")) deleteNote(notes.id)}}>Delete</button>
         {error ? <p>{error}</p> : null}
-        <button onClick={() => {if(window.confirm("Are you sure?")) editNote(notes.id)}}>Edit </button>
+        <button onClick={() => {if(window.confirm("Are you sure?")) UpdateNote(notes.id)}}>Edit </button>
         {error ? <p>{error}</p> : null}
         </section>
         ) : null}
@@ -45,5 +62,5 @@ export const NoteId = ({notes, removeNote}) => {
 
     </article>
     )
+        }
 
-}

@@ -36,6 +36,6 @@ export const Note = ({notes, removeNote}) => {
         <button onClick={() => {if(window.confirm("Are you sure?")) deleteNote(notes.id)}}>Delete</button>
         {error ? <p>{error}</p> : null}
         </section>
-        ) : null}
+        ) : <p>Não ha notas</p>}
     </article>)
 }

@@ -1,11 +1,9 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { getAllNotesService, sendNoteService } from "../services";
-import { AuthContext } from "../context/AuthContext";
 
 const useNotes = () => {
 
 
-    const {user} = useContext(AuthContext)
     const [notes, setNotes] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
@@ -44,14 +42,11 @@ const useNotes = () => {
     }
 
 
-    const refreshNotes = () => {
-        setNotes(notes.filter((note) => user.id === note.user_id))
-    }
 
 
     
 
-    return {notes, loading, error, addNote, removeNote, refreshNotes}
+    return {notes, loading, error, addNote, removeNote}
 }
 
 export default useNotes

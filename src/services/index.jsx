@@ -131,17 +131,20 @@ export const deleteNoteService = async ({id, token}) => {
 }
 
 
-export const editeNoteService = async ({id, token, title, text, category_id}) => {
+export const updateNoteService = async ({id}, data) => {
     const response = await fetch(`${import.meta.env.VITE_APP_BACKEND}/notes/${id}`, {
         method: "PUT",
         headers: {
+            'Content-Type': 'application/json',
             Authorization: token,
-            'Content-Type': 'application/json'
+
         }, 
-        body: JSON.stringify({title,text,category_id})
+        body: data
     });
 
+        
     const json = await response.json();
+    console.log(json)
 
     if(!response.ok) {
         throw new Error(json.message)

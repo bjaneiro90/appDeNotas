@@ -1,19 +1,34 @@
 import { Link } from "react-router-dom"
 import { Auth } from "./auth"
-import { useContext } from "react"
-import { AuthContext } from "../context/AuthContext"
+import { HamburguerButton } from "./hamburguer-button"
+import { ProfileButton } from "./profile-button"
+import { useState } from "react"
+import { LinkMenu } from "./link-menu"
+import { ProfileMenu } from "./profile-menu"
 
 export const Header = () => {
-    const contextValue = useContext(AuthContext)
 
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const [isProfileOpen, setIsProfileOpen] = useState(false)
+
+
+    function onMenuToggle() {
+        setIsMenuOpen((isMenuOpen) => !isMenuOpen)
+    }
+
+    function onProfileMenuToggle() {
+        setIsProfileOpen((isMenuOpen) => !isMenuOpen)
+    }
 
     return (
-        <header>
-            <h1><Link to="/">Note It Down</Link></h1>
-
-            <nav>
-                <Auth/>
-            </nav>
-        </header>
+        <>
+            <header className ="main-header">
+                <HamburguerButton onClick={onMenuToggle} IsMenuOpen={isMenuOpen}/>
+                <h1><Link to="/">Noted</Link></h1>
+                <ProfileButton onClick={onProfileMenuToggle}/>
+            </header>
+            {isMenuOpen && <LinkMenu/> }
+            {isProfileOpen && <ProfileMenu/>}
+        </>
     )
 }

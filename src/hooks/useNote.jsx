@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getSingleNoteService } from "../services";
+import { getSingleNoteService, updateNoteService } from "../services";
 
 const useNote = (id) => {
     const [notes, setNote] = useState(null);
@@ -26,11 +26,35 @@ const useNote = (id) => {
         loadNote()
     }, [id])
 
+
+
     const removeNote = (id) => {
         setNote(notes.filter((note) => note.id !== id))
     }
 
-    return {notes, loading, error, removeNote}
+
+
+    const refreshNote = async (note,token, id) => {
+        try {
+            setLoading(true)
+        
+            await updateNoteService(note,token)
+
+            const data = await getSingleNoteService(id)
+
+
+            setNote(data)
+    
+     } catch (error) {
+        setError(error.message)
+    } finally {
+        setLoading(false)
+    }
+}
+
+
+    return {notes, loading, error, removeNote, refreshNote}
 }
 
 export default useNote
+

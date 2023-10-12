@@ -1,8 +1,7 @@
 import { useContext, useState } from "react"
-import { sendNoteService } from "../services"
 import { AuthContext } from "../context/AuthContext"
 
-export const NewNote = ({addNote}) => {
+export const UpdateNote = ({refreshNote}) => {
     const [error,setError] = useState('')
     const [sending, setSending] = useState(false)
     const {token} = useContext(AuthContext)
@@ -20,7 +19,7 @@ export const NewNote = ({addNote}) => {
 
             const data = new FormData(e.target)
             //const note = await sendNoteService(data,token)
-            addNote(data, token)
+            refreshNote(data, token)
             e.target.reset()
             setImage(null)
         } catch (error) {
@@ -30,27 +29,27 @@ export const NewNote = ({addNote}) => {
         }
     }
 
-    return <form  className="new-note-form" onSubmit={handleForm}>
-        <h1>Add new Note</h1>
+    return <form onSubmit={handleForm}>
+        <h1>Update Note</h1>
         
-        <fieldset  className="new-note-form">
+        <fieldset>
             <label htmlFor="text">Title</label>
-            <input type="text" id="title" name="title" required onChange={(e) => setTitle(e.target.value)} />
+            <input type="text" id="title" name="title"onChange={(e) => setTitle(e.target.value)} />
         </fieldset>
-        <fieldset  className="new-note-form">
+        <fieldset>
             <label htmlFor="text">Text</label>
-            <textarea rows= "8" cols="40" type="text" id="text" name="text" required onChange={(e) => setText(e.target.value)} />
+            <input type="text" id="text" name="text" onChange={(e) => setText(e.target.value)} />
         </fieldset>
-        <fieldset  className="new-note-form">
+        <fieldset>
             <label htmlFor="number">Category</label>
-            <input type="number" id="number" name="category_id" required onChange={(e) => setCategory_id(e.target.value)}/>
+            <input type="number" id="number" name="category_id" onChange={(e) => setCategory_id(e.target.value)}/>
         </fieldset>
-        <fieldset  className="new-note-form">
+        <fieldset>
             <label htmlFor="image">Image (optional)</label>
             <input type="file" id="image" name="image" accept="image/*" onChange={(e) => setImage(e.target.files[0])} />
             {image ? <figure><img src={URL.createObjectURL(image)} alt="Preview" style={{width: '100px'}}/></figure>: null }
         </fieldset>
-        <button>Send Note</button>
+        <button>Update Note</button>
         {sending ? <p>Sending Note</p> : null }
         {error ? <p>{error}</p> : null}
     </form>
