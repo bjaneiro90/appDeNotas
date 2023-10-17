@@ -1,10 +1,11 @@
 import { ErrorMessage } from "../components/errorMessage"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { AuthContext } from "../context/AuthContext"
 import useNote from "../hooks/useNote"
 import { useParams } from "react-router-dom"
 import { UpdateNote } from "../components/UpdateNote"
-import { NoteListID } from "../components/NoteListID"
+import useNotes from "../hooks/useNotes"
+import { NoteId } from "../components/NoteId"
 
 
 export const NoteByID = () => {
@@ -13,10 +14,13 @@ export const NoteByID = () => {
 
     const {user} = useContext(AuthContext);
     const {id} = useParams()
-    const {notes, loading, error} = useNote(id)
+    const {note, loading, error, refreshNote} = useNote(id)
+    console.log(note);
+    const {removeNote} = useNotes()
+    const [isEdited, setIsEdited] = useState(false)
     if(loading) return <p>Carregando Notas</p>
     if(error) return ErrorMessage
-   
+
 
 
 
@@ -26,9 +30,9 @@ export const NoteByID = () => {
 
         {user ? <h2>My Note ID nº{id}</h2> :  <h2>Global Notes</h2>}
 
-        {user ? <NoteListID notes={notes}/> : <p> Back to Homepage</p>}
+        {user ? <NoteId note={note} isEdited={isEdited} setIsEdited={setIsEdited} removeNote={removeNote} error={error} /> : <p> Back to Homepage</p>}
 
-        {user ? <UpdateNote notes={notes}/> : null }
+        {isEdited && <UpdateNote note={note} refreshNote={refreshNote} />}
 
 
     

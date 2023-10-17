@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react"
-import { getAllNotesService, sendNoteService } from "../services";
+import { deleteNoteService, getAllNotesService, sendNoteService } from "../services";
 import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const useNotes = () => {
 
@@ -9,6 +10,7 @@ const useNotes = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     const {token} = useContext(AuthContext);
+    const navigate = useNavigate()
 
     useEffect(() => {
         const loadNotes = async () => {
@@ -32,15 +34,18 @@ const useNotes = () => {
 
     const addNote = async (note, token) => {
         await sendNoteService(note,token)
-        const newNotesList = await getAllNotesService()
+        const newNotesList = await getAllNotesService(token)
         setNotes(newNotesList)
         /*setNotes([
             note,
             ...notes]);*/
     } 
 
-    const removeNote = (id) => {
-        setNotes(notes.filter((note) => note.id !== id))
+    const removeNote = async (id, token) => {
+        await deleteNoteService({id, token})
+        const newNotesList = await getAllNotesService(token)
+        setNotes(newNotesList)
+        //setNotes(notes.filter((note) => note.id !== id))
     }
 
 

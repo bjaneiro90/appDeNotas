@@ -1,13 +1,10 @@
 
 
-import { useContext } from "react";
+
 import { Note } from "./note";
-import { AuthContext } from "../context/AuthContext";
+
 
 export const NoteList = ({ notes, removeNote }) => {
-	const {user} = useContext(AuthContext);
-	console.log(notes);
-	console.log(user)
 	
 
 	return notes?.length ? 

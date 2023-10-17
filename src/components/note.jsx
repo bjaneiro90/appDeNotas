@@ -10,7 +10,7 @@ export const Note = ({note, removeNote}) => {
     const [error, setError] = useState("")
 
     //const filterNotes = note.filter((note) => note.user_id === user.id )
-	//console.log(filterNotes)
+	
 
 
     const deleteNote = async (id) => {
@@ -35,7 +35,7 @@ export const Note = ({note, removeNote}) => {
             {note.image && <img src={`${import.meta.env.VITE_APP_BACKEND}`}/>}
     
             <section>
-                <button onClick={() => {if(window.confirm("Are you sure?")) deleteNote(note.id)}}>Delete</button>
+                <button onClick={() => {if(window.confirm("Are you sure?")) removeNote(note.id, token)}}>Delete</button>
                 {error ? <p>{error}</p> : null}
             </section>
         </article>

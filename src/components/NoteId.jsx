@@ -1,60 +1,36 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import { AuthContext } from "../context/AuthContext"
-import { deleteNoteService,updateNoteService} from "../services"
-import { useNavigate } from "react-router-dom"
+import { useNavigate  } from "react-router-dom"
 
-export const NoteId = ({notes, removeNote, refreshNote}) => {
+export const NoteId = ({note, isEdited, setIsEdited, removeNote, error}) => {
 
     const {user,token} = useContext(AuthContext)
-    const [error, setError] = useState("")
     const navigate = useNavigate()
-
-
-    const deleteNote = async (id) => {
-        try {
-            await deleteNoteService({id, token})
-            if(removeNote) {
-                removeNote(id)
-            } else {
-                navigate("/notes")
-            }
-        } catch (error) {
-            setError(error.message)
-        }
-}
-
-
-    const UpdateNote = async (note,id) => {
-        try {
-            await updateNoteService({note,token})
-            if(refreshNote) {
-                refreshNote(note,id)
-            } else {
-                navigate("/")
-            }
-
-    } catch (error) {
-        setError(error.message)
-
-    }
-}
-
-
-    
-
 
     return ( <article>
 
-        <h2>{notes.title}</h2>
+        <h2>{note.title}</h2>
 
-        <p>{notes.text}</p>
+        <p>{note.text}</p>
 
-        <p>Created by User Nº{notes.user_id} on {new Date(notes.dateCreate).toLocaleString()} </p>
-        {user && user.id === notes.user_id ? (
+        <p>Created by User Nº{note.user_id} on {new Date(note.dateCreate).toLocaleString()} </p>
+        {user && user.id === note.user_id ? (
         <section>
-        <button onClick={() => {if(window.confirm("Are you sure?")) deleteNote(notes.id)}}>Delete</button>
+        <button onClick={() => {
+            if(window.confirm("Are you sure?")) {
+                removeNote(note.id, token)
+                navigate("/notes")
+            }
+         }}>
+            Delete
+        </button>
         {error ? <p>{error}</p> : null}
-        <button onClick={() => {if(window.confirm("Are you sure?")) UpdateNote(notes.id)}}>Edit </button>
+        <button onClick={() => { 
+                setIsEdited(!isEdited)
+            }}
+        >
+            Edit
+        </button>
         {error ? <p>{error}</p> : null}
         </section>
         ) : null}

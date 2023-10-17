@@ -1,13 +1,13 @@
 import { useContext, useState } from "react"
 import { AuthContext } from "../context/AuthContext"
 
-export const UpdateNote = ({refreshNote}) => {
-    const [error,setError] = useState('')
-    const [sending, setSending] = useState(false)
+export const UpdateNote = ({note, refreshNote, loading}) => {
+    
+    const [error,setError] = useState()
     const {token} = useContext(AuthContext)
-    const [title, setTitle] = useState('')
-    const [text, setText] = useState('')
-    const [category_id, setCategory_id] = useState('')
+    const [title, setTitle] = useState(note.title)
+    const [text, setText] = useState(note.text)
+    const [category_id, setCategory_id] = useState(note.category_id)
     const [image,setImage] = useState()
    
 
@@ -15,18 +15,15 @@ export const UpdateNote = ({refreshNote}) => {
         e.preventDefault();
 
         try {
-            setSending(true);
 
             const data = new FormData(e.target)
             //const note = await sendNoteService(data,token)
-            refreshNote(data, token)
+            refreshNote(data)
             e.target.reset()
             setImage(null)
         } catch (error) {
             setError(error.message)
-        } finally {
-            setSending(false)
-        }
+        } 
     }
 
     return <form onSubmit={handleForm}>
@@ -34,23 +31,23 @@ export const UpdateNote = ({refreshNote}) => {
         
         <fieldset>
             <label htmlFor="text">Title</label>
-            <input type="text" id="title" name="title"onChange={(e) => setTitle(e.target.value)} />
+            <input type="text" id="title" name="title" value={title} required onChange={(e) => setTitle(e.target.value)} />
         </fieldset>
         <fieldset>
             <label htmlFor="text">Text</label>
-            <input type="text" id="text" name="text" onChange={(e) => setText(e.target.value)} />
+            <input type="text" id="text" name="text"  value={text} required onChange={(e) => setText(e.target.value)} />
         </fieldset>
         <fieldset>
-            <label htmlFor="number">Category</label>
-            <input type="number" id="number" name="category_id" onChange={(e) => setCategory_id(e.target.value)}/>
+            <label htmlFor="category_id">Category</label>
+            <input type="number" id="category_id" name="category_id" value={category_id} required onChange={(e) => setCategory_id(e.target.value)}/>
         </fieldset>
-        <fieldset>
+        {/*<fieldset>
             <label htmlFor="image">Image (optional)</label>
             <input type="file" id="image" name="image" accept="image/*" onChange={(e) => setImage(e.target.files[0])} />
             {image ? <figure><img src={URL.createObjectURL(image)} alt="Preview" style={{width: '100px'}}/></figure>: null }
-        </fieldset>
+        </fieldset>*/}
         <button>Update Note</button>
-        {sending ? <p>Sending Note</p> : null }
+        {loading ? <p>Sending Note</p> : null }
         {error ? <p>{error}</p> : null}
     </form>
 }

@@ -9,11 +9,11 @@ import { useNavigate } from "react-router-dom";
 
 
 export const NotePage = () => {
+    
     const {notes, loading, error, addNote, removeNote,} = useNotes();
-    console.log(notes)
+
     const {user} = useContext(AuthContext);
     const navigate = useNavigate()
-    console.log(user);
 
     /*if(!user) { 
         navigate('/users/login')
@@ -21,12 +21,8 @@ export const NotePage = () => {
     if(loading) return <p>Carregando Notas</p>
     if(error) return ErrorMessage
     
-    const filterNotes = notes.filter((note) => {
-        console.log(user?.id);
-        console.log(note?.user_id);
-        return note?.user_id === user?.id
-    } )
-	console.log(filterNotes)
+  
+
   
 
     return (

@@ -3,7 +3,7 @@ import { getSingleNoteService, updateNoteService } from "../services";
 import { AuthContext } from "../context/AuthContext";
 
 const useNote = (id) => {
-    const [notes, setNote] = useState(null);
+    const [note, setNote] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("")
     const {token} = useContext(AuthContext)
@@ -29,32 +29,30 @@ const useNote = (id) => {
 
 
 
-    const removeNote = (id) => {
-        setNote(notes.filter((note) => note.id !== id))
-    }
 
 
 
-    const refreshNote = async (note,token, id) => {
+    const refreshNote = async (note) => {
+        console.log(note.title);
         try {
             setLoading(true)
         
-            await updateNoteService(note,token)
+            await updateNoteService(id, note, token)
 
-            const data = await getSingleNoteService(id)
+            const data = await getSingleNoteService(id, token)
 
 
             setNote(data)
     
-     } catch (error) {
-        setError(error.message)
-    } finally {
-        setLoading(false)
+        } catch (error) {
+            setError(error.message)
+        } finally {
+            setLoading(false)
+        }
     }
-}
 
 
-    return {notes, loading, error, removeNote, refreshNote}
+    return {note, loading, error, refreshNote}
 }
 
 export default useNote

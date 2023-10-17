@@ -2,7 +2,7 @@
 
 export const getAllNotesService = async (contextToken) => {
 
-    console.log('servicio carga notas, token:', contextToken);
+   
     const response = await fetch(`${import.meta.env.VITE_APP_BACKEND}/notes` , {
         method: "GET",
         headers: {
@@ -38,7 +38,7 @@ export const getSingleNoteService = async (id, token) => {
 
     }
 
-    return json.data
+    return json.data[0]
 }
 
 
@@ -133,22 +133,23 @@ export const deleteNoteService = async ({id, token}) => {
 }
 
 
-export const updateNoteService = async ({id}, data) => {
+export const updateNoteService = async (id, data, token) => {
+    console.log(data)
     const response = await fetch(`${import.meta.env.VITE_APP_BACKEND}/notes/${id}`, {
         method: "PUT",
         headers: {
-            'Content-Type': 'application/json',
             Authorization: token,
-
         }, 
         body: data
     });
 
         
-    const json = await response.json();
-    console.log(json)
+    const json = await response.json()
+   
 
     if(!response.ok) {
         throw new Error(json.message)
     }
+
+    return json.data
 }
