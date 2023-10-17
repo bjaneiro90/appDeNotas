@@ -6,7 +6,7 @@ export const AuthContext = createContext();
 export const AuthProviderComponent = ({children}) => {
     const [token, setToken] = useState(localStorage.getItem("token"));
     const [user, setUser] = useState(null)
-    console.log(token)
+    //console.log(token)
 
     useEffect(() => {
         localStorage.setItem('token', token)  
@@ -18,6 +18,7 @@ export const AuthProviderComponent = ({children}) => {
                 const data = await getMyDataService({token})
 
                 setUser(data)
+                console.log(data)
             } catch (error) {
                 logout()
             }

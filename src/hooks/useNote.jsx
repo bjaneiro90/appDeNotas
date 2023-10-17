@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { getSingleNoteService, updateNoteService } from "../services";
+import { AuthContext } from "../context/AuthContext";
 
 const useNote = (id) => {
     const [notes, setNote] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("")
+    const {token} = useContext(AuthContext)
     
 
     useEffect(() => {
@@ -12,7 +14,7 @@ const useNote = (id) => {
             try {
                 setLoading(true);
 
-                const data = await getSingleNoteService(id);
+                const data = await getSingleNoteService(id, token);
 
                 setNote(data)
 
@@ -22,9 +24,8 @@ const useNote = (id) => {
                 setLoading(false)
             }
         }
-
-        loadNote()
-    }, [id])
+        if(token) loadNote()
+    }, [id, token])
 
 
 

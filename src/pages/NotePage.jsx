@@ -34,7 +34,7 @@ export const NotePage = () => {
             <h1>Note Page</h1>
             <NewNote addNote={addNote} />
             <h2>My Latest Notes</h2>        
-            <NoteList notes={filterNotes} removeNote={removeNote}/>
+            <NoteList notes={notes} removeNote={removeNote}/>
 
         </main>
     )

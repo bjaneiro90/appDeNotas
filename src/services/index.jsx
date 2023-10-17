@@ -1,10 +1,12 @@
-const token = localStorage.getItem("token")
+//const token = localStorage.getItem("token")
 
-export const getAllNotesService = async () => {
+export const getAllNotesService = async (contextToken) => {
+
+    console.log('servicio carga notas, token:', contextToken);
     const response = await fetch(`${import.meta.env.VITE_APP_BACKEND}/notes` , {
         method: "GET",
         headers: {
-            Authorization: token
+            Authorization: contextToken
         },
     })
 
@@ -19,7 +21,7 @@ export const getAllNotesService = async () => {
 
 
 
-export const getSingleNoteService = async (id) => {
+export const getSingleNoteService = async (id, token) => {
     const response = await fetch(`${import.meta.env.VITE_APP_BACKEND}/notes/${id}`, {
         method: "GET",
         headers: {

@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { getAllNotesService, sendNoteService } from "../services";
+import { AuthContext } from "../context/AuthContext";
 
 const useNotes = () => {
 
@@ -7,13 +8,14 @@ const useNotes = () => {
     const [notes, setNotes] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const {token} = useContext(AuthContext);
 
     useEffect(() => {
         const loadNotes = async () => {
             try {
                 setLoading(true);
 
-                const data = await getAllNotesService();
+                const data = await getAllNotesService(token);
 
                 setNotes(data);
     
@@ -25,8 +27,8 @@ const useNotes = () => {
                 setLoading(false)
             }
         }
-        loadNotes();
-    }, [])
+        if(token) loadNotes();
+    }, [token])
 
     const addNote = async (note, token) => {
         await sendNoteService(note,token)

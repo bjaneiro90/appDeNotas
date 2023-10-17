@@ -18,7 +18,8 @@ export const LoginPage = () => {
         try {
             const data = await loginUserService({email, password})
 
-            await login(data.token)
+        login(data.token)
+
             navigate("/notes")
         } catch (error) {
             setError(error.message)
