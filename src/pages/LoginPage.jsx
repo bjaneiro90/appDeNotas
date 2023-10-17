@@ -18,8 +18,7 @@ export const LoginPage = () => {
         try {
             const data = await loginUserService({email, password})
 
-            login(data.token)
-            e.target.reset()
+            await login(data.token)
             navigate("/notes")
         } catch (error) {
             setError(error.message)

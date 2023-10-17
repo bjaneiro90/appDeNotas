@@ -3,11 +3,14 @@ import { Link } from "react-router-dom"
 import { AuthContext } from "../context/AuthContext"
 import { deleteNoteService } from "../services"
 
-export const Note = ({notes, removeNote}) => {
+export const Note = ({note, removeNote}) => {
 
     
     const {user, token} = useContext(AuthContext)
     const [error, setError] = useState("")
+
+    //const filterNotes = note.filter((note) => note.user_id === user.id )
+	//console.log(filterNotes)
 
 
     const deleteNote = async (id) => {
@@ -20,22 +23,21 @@ export const Note = ({notes, removeNote}) => {
 
     }
 
+   
 
-    return (<article>
-        <Link to={`/notes/${notes.id}`}> 
-            <p>{notes.title}</p>
-        </Link>
+    return (
+        (note?.user_id === user?.id || note?.private === 0) &&
+        <article>
+            <Link to={`/notes/${note.id}`}> 
+                <p>{note.title}</p>
+            </Link>
 
-        
-
-        {notes.image ? <img src={`${import.meta.env.VITE_APP_BACKEND}`}/> : null}
+            {note.image && <img src={`${import.meta.env.VITE_APP_BACKEND}`}/>}
     
-
-        {user && user.id === notes.user_id ? (
-        <section>
-        <button onClick={() => {if(window.confirm("Are you sure?")) deleteNote(notes.id)}}>Delete</button>
-        {error ? <p>{error}</p> : null}
-        </section>
-        ) : <p>Não ha notas</p>}
-    </article>)
+            <section>
+                <button onClick={() => {if(window.confirm("Are you sure?")) deleteNote(note.id)}}>Delete</button>
+                {error ? <p>{error}</p> : null}
+            </section>
+        </article>
+    )
 }

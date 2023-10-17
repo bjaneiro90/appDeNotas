@@ -35,8 +35,6 @@ export function ProfileMenu() {
             alignItems: "center"
             
         }}>
-            <li><Link to="/users/login">Login</Link></li>
-            <li><Link to="/users">Register</Link></li>
             <Link to={`/`}>
                 <p>
                 <button style={{
@@ -46,7 +44,8 @@ export function ProfileMenu() {
                 </p>
             </Link>
             <p style={{
-                fontSize: "20px",
+                fontSize: "25px",
+                gap: "20px",
             }}>Logged in as {user.email}</p> 
 
 

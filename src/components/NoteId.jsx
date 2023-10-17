@@ -16,7 +16,7 @@ export const NoteId = ({notes, removeNote, refreshNote}) => {
             if(removeNote) {
                 removeNote(id)
             } else {
-                navigate("/")
+                navigate("/notes")
             }
         } catch (error) {
             setError(error.message)
