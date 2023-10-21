@@ -14,10 +14,12 @@ export const Header = () => {
 
     function onMenuToggle() {
         setIsMenuOpen((isMenuOpen) => !isMenuOpen)
-    }
+        setIsProfileOpen(false)
+    } 
 
     function onProfileMenuToggle() {
         setIsProfileOpen((isMenuOpen) => !isMenuOpen)
+        setIsMenuOpen(false)
     }
 
     return (

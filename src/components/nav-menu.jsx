@@ -21,7 +21,7 @@ export function NavMenu() {
         <nav 
         style= {{
             position: "absolute",
-            top: "66px",
+            top: "67px",
             backgroundColor: "white",
             borderBottomRightRadius: "16px",
             border: "1px solid black",

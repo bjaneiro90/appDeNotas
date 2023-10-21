@@ -153,3 +153,18 @@ export const updateNoteService = async (id, data, token) => {
 
     return json.data
 }
+
+
+export const getCategory = async(data) => {
+    const response = await fetch(`${import.meta.env.VITE_APP_BACKEND}/category`, {
+        method: "GET", 
+        body: data
+    });
+
+    const json = await response.json()
+    if(!response.ok) {
+        throw new Error(json.message)
+    }
+
+    return json.data
+}

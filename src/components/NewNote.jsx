@@ -22,7 +22,7 @@ export const NewNote = ({addNote}) => {
             //const note = await sendNoteService(data,token)
             addNote(data, token)
             e.target.reset()
-            setImage(null)
+            console.log(category_id)
         } catch (error) {
             setError(error.message)
         } finally {
@@ -44,11 +44,6 @@ export const NewNote = ({addNote}) => {
         <fieldset  className="new-note-form">
             <label htmlFor="number">Category</label>
             <input type="number" id="number" name="category_id" required onChange={(e) => setCategory_id(e.target.value)}/>
-        </fieldset>
-        <fieldset  className="new-note-form">
-            <label htmlFor="image">Image (optional)</label>
-            <input type="file" id="image" name="image" accept="image/*" onChange={(e) => setImage(e.target.files[0])} />
-            {image ? <figure><img src={URL.createObjectURL(image)} alt="Preview" style={{width: '100px'}}/></figure>: null }
         </fieldset>
         <button>Send Note</button>
         {sending ? <p>Sending Note</p> : null }

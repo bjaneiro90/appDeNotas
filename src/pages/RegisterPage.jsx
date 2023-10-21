@@ -7,7 +7,7 @@ export const RegisterPage = () => {
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
     const [email, setEmail] = useState('');
-    const [pass1, setPass1] = useState('');
+    const [password, setPass1] = useState('');
     const [pass2, setPass2] = useState('');
     const [error, setError] = useState('')
 
@@ -15,12 +15,12 @@ export const RegisterPage = () => {
         e.preventDefault();
         setError("")
 
-        if (pass1 !== pass2) {
+        if (password !== pass2) {
             setError("Passwords do not match")
         }
 
         try {
-            await registerUserService({name, surname,email, password:pass1})
+            await registerUserService({name, surname,email, password})
 
             navigate("login")
         } catch (error) {
@@ -46,7 +46,7 @@ export const RegisterPage = () => {
                 </fieldset>
                 <fieldset>
                     <label htmlFor="pass1">Password</label>
-                    <input type="password" id="pass1" name="pass1" required onChange={(e) => setPass1(e.target.value)} />
+                    <input type="password" id="password" name="password" required onChange={(e) => setPass1(e.target.value)} />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="pass2">Repeat Password</label>

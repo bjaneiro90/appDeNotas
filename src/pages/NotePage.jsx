@@ -1,23 +1,17 @@
-import { useContext} from "react";
+import { useState} from "react";
 import { ErrorMessage } from "../components/errorMessage"
 import useNotes from "../hooks/useNotes"
-import { AuthContext } from "../context/AuthContext";
 import { NewNote } from "../components/NewNote";
 import { NoteList } from "../components/NoteList";
-import { useNavigate } from "react-router-dom";
+
 
 
 
 export const NotePage = () => {
     
     const {notes, loading, error, addNote, removeNote,} = useNotes();
-
-    const {user} = useContext(AuthContext);
-    const navigate = useNavigate()
-
-    /*if(!user) { 
-        navigate('/users/login')
-    }*/
+    const [isNew, setIsNew] = useState(false)
+   
     if(loading) return <p>Carregando Notas</p>
     if(error) return ErrorMessage
     
@@ -28,7 +22,18 @@ export const NotePage = () => {
     return (
         <main className="allpostspage-main">
             <h1>Note Page</h1>
-            <NewNote addNote={addNote} />
+            <button style={{
+                width: "2rem",
+                height: "2.5rem",
+                
+            }} onClick={() => { 
+                setIsNew(!isNew)
+            }}
+        >
+            New
+        </button>
+        {error ? <p>{error}</p> : null}
+           {isNew && <NewNote addNote={addNote}/>}
             <h2>My Latest Notes</h2>        
             <NoteList notes={notes} removeNote={removeNote}/>
 
