@@ -18,7 +18,9 @@ export function LinkMenu() {
         >
 
         </div>
-        <nav>
+        <nav style={{
+            backgroundColor: "white"
+        }}>
         <ul style ={{
             position: "absolute",
             display: "flex",
@@ -29,13 +31,12 @@ export function LinkMenu() {
             top: "66px",
             border:  "1px solid black",
             justifyContent: "space-evenly",
-            backgroundColor: "white",
+            backgroundColor: "#f8f3f6",
             borderBottomRightRadius: "15px",
             alignItems:"center"
         }}>
             <li><Link to="/notes">My Notes</Link></li>
             <li><Link to="/">Homepage</Link></li>
-            <li><Link to="/category">Categories</Link></li>
             
         </ul>
         </nav>
@@ -53,7 +54,9 @@ export function LinkMenu() {
         >
 
         </div>
-        <nav>
+        <nav style={{
+            backgroundColor: "white"
+        }}>
         <ul style ={{
             position: "absolute",
             display: "flex",
@@ -64,7 +67,7 @@ export function LinkMenu() {
             top: "66px",
             border:  "1px solid black",
             justifyContent: "space-evenly",
-            backgroundColor: "white",
+            backgroundColor: "#f8f3f6",
             borderBottomRightRadius: "15px",
             alignItems:"center"
         }}>

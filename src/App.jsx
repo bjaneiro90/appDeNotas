@@ -22,7 +22,6 @@ function App() {
           <Route path="/users/login" element={<LoginPage/>} />
           <Route path="/notes" element={<NotePage/>} />
           <Route path="/notes/:id" element={<NoteByID/>} />
-          <Route path="/category" element={<Categories/>} />
           <Route path="*" element={<NotFoundPage/>} />
         </Routes>
       <Footer/>

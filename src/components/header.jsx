@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom"
-import { Auth } from "./auth"
 import { HamburguerButton } from "./hamburguer-button"
 import { ProfileButton } from "./profile-button"
 import { useState } from "react"

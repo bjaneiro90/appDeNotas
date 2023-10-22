@@ -22,7 +22,7 @@ export const NewNote = ({addNote}) => {
             //const note = await sendNoteService(data,token)
             addNote(data, token)
             e.target.reset()
-            console.log(category_id)
+    
         } catch (error) {
             setError(error.message)
         } finally {

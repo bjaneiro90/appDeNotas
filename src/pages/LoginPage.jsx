@@ -24,7 +24,10 @@ export const LoginPage = () => {
 
             navigate("/notes")
         } catch (error) {
-            setError(error.message)
+            setError(<p style={{color: "red",
+                                fontSize: "22px",
+                                fontStyle: "italic"                            
+        }}>Email or Password not correct. Please try again</p>)
         }
     }
 

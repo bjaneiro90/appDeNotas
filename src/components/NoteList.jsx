@@ -15,5 +15,5 @@ export const NoteList = ({ notes, removeNote }) => {
 		<li key={note.id} className="note-list"><Note note={note} removeNote={removeNote} />
 		</li>)}
 	</ul> : 
-	<p>nao ha notas</p>;
+	<p>No notes yet !</p>;
 };

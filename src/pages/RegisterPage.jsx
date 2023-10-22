@@ -16,15 +16,24 @@ export const RegisterPage = () => {
         setError("")
 
         if (password !== pass2) {
-            setError("Passwords do not match")
-        }
+            const msg = ("Passwords do not match")
+            return (
+                setError(<p style={{color: "red",
+                fontSize: "22px",
+                fontStyle: "italic"                            
+}}>{msg}</p>)
+        )}
 
         try {
             await registerUserService({name, surname,email, password})
 
             navigate("login")
         } catch (error) {
-            setError(error.message)
+            const msg = (error.message)
+            setError(<p style={{color: "red",
+                                        fontSize: "22px",
+                                        fontStyle: "italic"                            
+                    }}>{msg}</p>)
         }
     }
  

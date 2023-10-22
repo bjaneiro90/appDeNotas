@@ -21,10 +21,8 @@ export function ProfileMenu() {
         <nav style ={{
             position: "absolute",
             right: "0",
-            padding: "8px",
             top: "66px",
             border:  "1px solid black",
-            backgroundColor: "white",
             borderBottomLeftRadius: "15px"
         }}>
         <ul style= {{
@@ -32,7 +30,10 @@ export function ProfileMenu() {
             flexDirection: "column",
             listStyleType: "none",
             justifyContent: "space-evenly",
-            alignItems: "center"
+            backgroundColor: "#f8f3f6",
+            padding: "0px 0px 4px 4px",
+            alignItems: "center",
+            borderBottomLeftRadius: "15px"
             
         }}>
             <Link to={`/`}>
@@ -71,7 +72,7 @@ export function ProfileMenu() {
             padding: "30px",
             top: "66px",
             border:  "1px solid black",
-            backgroundColor: "white",
+            backgroundColor: "#f8f3f6",
             borderBottomLeftRadius: "15px"
         }}>
         <ul style= {{
@@ -79,7 +80,8 @@ export function ProfileMenu() {
             flexDirection: "column",
             listStyleType: "none",
             justifyContent: "space-between",
-            alignItems: "center"
+            alignItems: "center",
+            backgroundColor: "#f8f3f6"
             
         }}>
             <li><Link to="/users/login">Login</Link></li>
