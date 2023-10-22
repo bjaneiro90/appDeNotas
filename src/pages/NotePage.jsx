@@ -20,23 +20,54 @@ export const NotePage = () => {
   
 
     return (
-        <main className="allpostspage-main">
-            <h1>Note Page</h1>
-            <button style={{
-                width: "2rem",
-                height: "2.5rem",
-                
-            }} onClick={() => { 
-                setIsNew(!isNew)
-            }}
-        >
-            New
-        </button>
-        {error ? <p>{error}</p> : null}
-           {isNew && <NewNote addNote={addNote}/>}
-            <h2>My Latest Notes</h2>        
-            <NoteList notes={notes} removeNote={removeNote}/>
+        <div className="box">
+            <section style={{
+            width: "100%",
+            backgroundColor: "rgba(194, 159, 182, 0.12)",
+            margin: "0",
+            padding: "1rem",
+            borderRadius: "5%",
+            marginTop: "0rem",
+            boxShadow: "0px 0px 2px 0.2px"
+        }}>
+            <header style={{
+                    margin: "0",
+                    borderBottom: "0.5px solid grey",
+                    paddingBottom: "0.5rem"
+            }}>
+                <h2 style={{
+                fontSize: "2rem",
+                marginTop: "0",
+        }}>
+                Note Page</h2>
+            </header>
+                <button style={{
+                     paddingLeft: "5px",
+                     paddingRight: "5px",
+                     marginTop: "1rem"
+                    
+                }} onClick={() => { 
+                    setIsNew(!isNew)
+                }}
+            >
+                New
+            </button>
+            {error ? <p>{error}</p> : null}
+            {isNew && <NewNote addNote={addNote}/>}
+            <header style={{
+                    margin: "0",
+                    borderBottom: "0.5px solid grey",
+                    paddingBottom: "0.5rem"
+            }}>
+                <h2 style={{
+                fontSize: "2rem",
+                marginTop: "1rem",
+        }}>
+            My Latest Notes</h2>
+            </header>        
+                <NoteList notes={notes} removeNote={removeNote}/>
 
-        </main>
+            </section>
+        </div>
     )
 }

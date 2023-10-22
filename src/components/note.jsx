@@ -27,17 +27,29 @@ export const Note = ({note, removeNote}) => {
 
     return (
         (note?.user_id === user?.id || note?.private === 0) &&
-        <article>
+        <main style={{
+            
+        }}>
             <Link to={`/notes/${note.id}`}> 
-                <p>{note.title}</p>
+                <p 
+                    style={{
+                        marginTop:"1rem",
+                        marginBottom:"0",
+                        fontWeight: "bolder",
+                        fontSize: "2rem"
+                    }}>
+                {note.title}</p>
             </Link>
 
-            {note.image && <img src={`${import.meta.env.VITE_APP_BACKEND}`}/>}
-    
-            <section>
-                <button onClick={() => {if(window.confirm("Are you sure?")) removeNote(note.id, token)}}>Delete</button>
+                <div>
+                <button
+                style={{
+                    paddingLeft: "5px",
+                    paddingRight: "5px"
+                }}
+                onClick={() => {if(window.confirm("Are you sure?")) removeNote(note.id, token)}}>Delete</button>
                 {error ? <p>{error}</p> : null}
-            </section>
-        </article>
+                </div>
+        </main>
     )
 }

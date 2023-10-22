@@ -10,7 +10,6 @@ const useNotes = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     const {token} = useContext(AuthContext);
-    const navigate = useNavigate()
 
     useEffect(() => {
         const loadNotes = async () => {

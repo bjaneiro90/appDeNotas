@@ -26,17 +26,31 @@ export const NoteByID = () => {
 
  
     return (
-        <section>
+        <div className="box">
+            <section style={{
+            width: "100%",
+            backgroundColor: "rgba(194, 159, 182, 0.12)",
+            margin: "0",
+            padding: "1rem",
+            borderRadius: "5%",
+            marginTop: "0rem",
+            boxShadow: "0px 0px 2px 0.2px"
+        }}>
 
-        {user ? <h2>My Note ID nº{id}</h2> :  <h2>Global Notes</h2>}
+            {user ? <h2 style={{
+                        fontSize: "2rem",
+                        marginTop: "0",
+                }}>
+                    Note nº{id}</h2> :  <h2>Global Notes</h2>}
 
-        {user ? <NoteId note={note} isEdited={isEdited} setIsEdited={setIsEdited} removeNote={removeNote} error={error} /> : <p> Back to Homepage</p>}
+            {user ? <NoteId note={note} isEdited={isEdited} setIsEdited={setIsEdited} removeNote={removeNote} error={error} /> : <p> Back to Homepage</p>}
 
-        {isEdited && <UpdateNote note={note} refreshNote={refreshNote} />}
+            {isEdited && <UpdateNote note={note} refreshNote={refreshNote} />}
 
 
-    
+        
 
-        </section>
+            </section>
+        </div>
     )
 } 

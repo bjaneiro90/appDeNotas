@@ -29,8 +29,8 @@ export const Header = () => {
                 <h1><Link to="/">Noted</Link></h1>
                 <ProfileButton onClick={onProfileMenuToggle}/>
             </header>
-            {isMenuOpen && <LinkMenu/> }
-            {isProfileOpen && <ProfileMenu/>}
+            {isMenuOpen && <LinkMenu onClose={onMenuToggle}/> }
+            {isProfileOpen && <ProfileMenu onClose={onProfileMenuToggle}/>}
         </>
     )
 }

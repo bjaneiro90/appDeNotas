@@ -1,3 +1,5 @@
+
+
 :root {
     --header-font-family: 'Just Another Hand', sans-serif;
     --body-font-family: 'Just Another Hand', sans-serif;
@@ -8,7 +10,8 @@
     font-family: inherit;
     font-size: inherit;
     margin: 0;
-    padding: 0
+    padding: 0;
+    text-align: center;
 }
 
 a {
@@ -51,8 +54,13 @@ div#root {
     height: 4.05rem;
     Border-Bottom: 1px solid black;
     align-items: center;
-    background-color: white ;
+    background-color: rgba(194, 159, 182, 0.12) ;
     justify-content: space-between;
+}
+
+header > h1 {
+    font-family: var(--body-font-family);
+    font-size: 55px;
 }
 
 .profile-picture {
@@ -73,19 +81,59 @@ header > button {
     height: 50px;
     width: 50px;
     padding: 4px;
+    background-color:rgba(194, 159, 182, 0.12);
 }
 
-header > h1 {
-    font-family: var(--body-font-family);
-    font-size: 55px;
-}
 
-.note-list {
-    padding: 16px;
-    border: 0.5px solid black
-}
 
 .new-note-form {
     border: none;
     ;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+footer {
+    background-color: rgba(194, 159, 182, 0.12);
+    border-top: 0.3px solid black;
+    text-align: center;
+    font-size: 1.5rem;
+    padding-top: 4px;
+}
+
+h2 {
+    margin-top: 1.7rem;
+    font-size: 2.5rem ;
+}
+
+fieldset {
+    border: none;
+    padding: 0.3rem;
+    text-align: center;
+}
+
+.new-note-form {
+    text-align: start;
+}
+
+.label{
+    padding: 1rem;
+}
+
+
+.box {
+    align-self: center;
+    border: none !important;
+    width: 25rem;
+    height: 200rem;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+  }
+
+
+.note-list {
+    border: "none"
 }

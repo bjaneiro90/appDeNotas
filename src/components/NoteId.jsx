@@ -6,17 +6,40 @@ export const NoteId = ({note, isEdited, setIsEdited, removeNote, error}) => {
 
     const {user,token} = useContext(AuthContext)
     const navigate = useNavigate()
+    console.log(note)
 
-    return ( <article>
+   
+    return ( <section style={{
+                       margin:"0.3rem"    
+    }}>
 
-        <h2>{note.title}</h2>
+        <h3 style={{
+            color: "purple",
+            margin: "1rem"
+        }}>{note.title}</h3>
 
-        <p>{note.text}</p>
+        <p style={{
+            marginTop: "1rem",
+            textAlign: "left",
+        }}>{note.text}</p>
 
-        <p>Created by User Nº{note.user_id} on {new Date(note.dateCreate).toLocaleString()} </p>
+        <p>{note.categoryID}</p>
+
+        <p style={{
+            fontSize:"1.1rem",
+            fontStyle: "italic",
+            marginTop: "0.2rem",
+            textAlign: "left"
+        }}>
+            Created by User Nº{note.user_id} on {new Date(note.dateCreate).toLocaleString()} </p>
         {user && user.id === note.user_id ? (
         <section>
-        <button onClick={() => {
+        <button style={{
+            marginRight: "0.7rem",
+            paddingLeft: "5px",
+            paddingRight: "5px"
+        }}
+        onClick={() => {
             if(window.confirm("Are you sure?")) {
                 removeNote(note.id, token)
                 navigate("/notes")
@@ -25,7 +48,13 @@ export const NoteId = ({note, isEdited, setIsEdited, removeNote, error}) => {
             Delete
         </button>
         {error ? <p>{error}</p> : null}
-        <button onClick={() => { 
+        <button style={{
+            marginTop: "3rem",
+            marginleft: "0.7rem",
+            paddingLeft: "5px",
+            paddingRight: "5px"
+        }}
+        onClick={() => { 
                 setIsEdited(!isEdited)
             }}
         >
@@ -36,7 +65,7 @@ export const NoteId = ({note, isEdited, setIsEdited, removeNote, error}) => {
         ) : null}
 
 
-    </article>
+    </section>
     )
         }
 
