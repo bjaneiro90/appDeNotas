@@ -21,7 +21,7 @@ export function ProfileMenu() {
         <nav style ={{
             position: "absolute",
             right: "0",
-            top: "66px",
+            top: "63px",
             border:  "1px solid black",
             borderBottomLeftRadius: "15px"
         }}>
@@ -29,9 +29,10 @@ export function ProfileMenu() {
             display: "flex",
             flexDirection: "column",
             listStyleType: "none",
-            justifyContent: "space-evenly",
-            backgroundColor: "#f8f3f6",
-            padding: "0px 0px 4px 4px",
+            justifyContent: "space-around",
+            gap:"0.5rem",
+            backgroundColor: "white",
+            padding: "0.5rem",
             alignItems: "center",
             borderBottomLeftRadius: "15px"
             
@@ -62,15 +63,16 @@ export function ProfileMenu() {
                 backgroundColor: "rgba(0,0,0,0.7)",
                 width: "100%",
                 top: "4rem",
-                bottom: "0"
+                bottom: "0",
+                height: "calc(100vh - 6.5rem)",
             }}
         >
         </div>
         <nav style ={{
             position: "absolute",
             right: "0",
-            padding: "30px",
-            top: "66px",
+            padding: "1rem",
+            top: "63px",
             border:  "1px solid black",
             backgroundColor: "#f8f3f6",
             borderBottomLeftRadius: "15px"

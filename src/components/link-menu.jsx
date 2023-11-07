@@ -20,21 +20,21 @@ export function LinkMenu() {
 
         </div>
         <nav style={{
-            backgroundColor: "white"
+             position: "absolute",
+             left: "0",
+             padding: "1rem",
+             top: "63px",
+             border:  "1px solid black",
+             backgroundColor: "white",
+             borderBottomRightRadius: "15px"
         }}>
         <ul style ={{
-            position: "absolute",
             display: "flex",
             flexDirection: "column",
             listStyleType: "none",
-            padding: "20px",
-            paddingRight: "33px",
-            top: "66px",
-            border:  "1px solid black",
-            justifyContent: "space-evenly",
-            backgroundColor: "#f8f3f6",
-            borderBottomRightRadius: "15px",
-            alignItems:"center"
+            justifyContent: "space-between",
+            alignItems: "center",
+            backgroundColor: "white"
         }}>
             <li><Link to="/notes">My Notes</Link></li>
             <li><Link to="/">Homepage</Link></li>
@@ -56,21 +56,21 @@ export function LinkMenu() {
 
         </div>
         <nav style={{
-            backgroundColor: "white"
+            position: "absolute",
+            left: "0",
+            padding: "1rem",
+            top: "63px",
+            border:  "1px solid black",
+            backgroundColor: "white",
+            borderBottomRightRadius: "15px"
         }}>
         <ul style ={{
-            position: "absolute",
-            display: "flex",
-            flexDirection: "column",
-            listStyleType: "none",
-            padding: "20px",
-            paddingRight: "33px",
-            top: "66px",
-            border:  "1px solid black",
-            justifyContent: "space-evenly",
-            backgroundColor: "#f8f3f6",
-            borderBottomRightRadius: "15px",
-            alignItems:"center"
+           display: "flex",
+           flexDirection: "column",
+           listStyleType: "none",
+           justifyContent: "space-between",
+           alignItems: "center",
+           backgroundColor: "white"
         }}>
             <li><Link to="/">Homepage</Link></li>
             
