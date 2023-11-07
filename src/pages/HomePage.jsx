@@ -15,7 +15,8 @@ export const HomePage = () => {
 
     return (
     <main   style={{
-            textAlign: "center"
+            textAlign: "center",
+            marginTop: "5.5rem"
     }}>
          <h2    style={{
                 textAlign: "center",
