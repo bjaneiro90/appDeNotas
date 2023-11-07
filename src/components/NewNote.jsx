@@ -9,7 +9,7 @@ export const NewNote = ({addNote}) => {
     const [title, setTitle] = useState('')
     const [text, setText] = useState('')
     const [category_id, setCategory_id] = useState('')
-    const [image,setImage] = useState()
+    const [image,setImage] = useState('')
    
 
     const handleForm = async(e) => {
@@ -80,6 +80,17 @@ export const NewNote = ({addNote}) => {
             <option value="10">Reminders</option>
             <option value="11"></option>
             </select>
+        </fieldset>
+        <fieldset className="new-note-form">
+            <label htmlFor="inputField">Image (optional)</label>
+            <input style={{
+                 marginTop: "1rem",
+                 paddingLeft: "5px",
+                 paddingRight: "5px",
+                 fontSize: "0.85rem",
+                 display: "inline-block"
+            }}  type="file" id="inputField" name="image"
+             onChange={(e) => setImage(e.target.value)} />
         </fieldset>
         <button style={{
                     marginTop: "1rem",

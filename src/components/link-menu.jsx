@@ -12,8 +12,9 @@ export function LinkMenu() {
                 position:"absolute",
                 backgroundColor: "rgba(0,0,0,0.7)",
                 width: "100%",
-                top: "67px",
-                bottom: "0"
+                top: "4rem",
+                //bottom: "2.5rem",
+                height: "calc(100vh - 6.5rem)"
             }}
         >
 
@@ -48,7 +49,7 @@ export function LinkMenu() {
                 position:"absolute",
                 backgroundColor: "rgba(0,0,0,0.7)",
                 width: "100%",
-                top: "67px",
+                top: "4rem",
                 bottom: "0"
             }}
         >

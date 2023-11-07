@@ -13,7 +13,7 @@ export function ProfileMenu() {
                 position:"absolute",
                 backgroundColor: "rgba(0,0,0,0.7)",
                 width: "100%",
-                top: "67px",
+                top: "4rem",
                 bottom: "0"
             }}
         >
@@ -61,7 +61,7 @@ export function ProfileMenu() {
                 position:"absolute",
                 backgroundColor: "rgba(0,0,0,0.7)",
                 width: "100%",
-                top: "67px",
+                top: "4rem",
                 bottom: "0"
             }}
         >

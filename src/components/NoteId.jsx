@@ -16,12 +16,23 @@ export const NoteId = ({note, isEdited, setIsEdited, removeNote, error}) => {
         <h3 style={{
             color: "purple",
             margin: "1rem"
-        }}>{note.title}</h3>
+        }}
+        >{note.title}</h3>
+
+        {note.image ? (
+        <img 
+        style={{
+            width: "20rem",
+            borderRadius: "1rem"
+        }}
+        src={`${import.meta.env.VITE_APP_BACKEND}/uploads/${note.image}`} />
+   ) : null}
 
         <p style={{
             marginTop: "1rem",
             textAlign: "left",
-        }}>{note.text}</p>
+        }
+        }>{note.text}</p>
 
         <p>{note.categoryID}</p>
 

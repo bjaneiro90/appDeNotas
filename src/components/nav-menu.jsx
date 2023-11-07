@@ -13,7 +13,7 @@ export function NavMenu() {
             backgroundColor: "rgba(0,0,0,0.7)",
             width: "100%",
             bottom: "0",
-            top: "66px"
+            top: "4rem"
             
         }}>
             {/*Backdrop*/ }
