@@ -25,22 +25,15 @@ export const NoteId = ({note, isEdited, setIsEdited, removeNote, error}) => {
         }
         }>{note.text}</p>
 
-        <p>{note.categoryID}</p>
+    
 
-        <p style={{
-            fontSize:"1.1rem",
-            fontStyle: "italic",
-            marginTop: "0.2rem",
-            textAlign: "left"
-        }}>
-            Created by User Nº{note.user_id} on {new Date(note.dateCreate).toLocaleString()} </p>
+        <p className="note-id-text-style">
+           Category: {<span style ={{fontWeight:"bolder"}}>{note.category}</span>} </p>
+        <p className="note-id-text-style">Created on <span style ={{fontWeight:"bolder"}}>{new Date(note.dateCreate).toLocaleString()}</span></p>
+        
         {user && user.id === note.user_id ? (
         <section>
-        <button style={{
-            marginRight: "0.7rem",
-            paddingLeft: "5px",
-            paddingRight: "5px"
-        }}
+        <button className="delete-button"
         onClick={() => {
             if(window.confirm("Are you sure?")) {
                 removeNote(note.id, token)
@@ -50,12 +43,7 @@ export const NoteId = ({note, isEdited, setIsEdited, removeNote, error}) => {
             Delete
         </button>
         {error ? <p>{error}</p> : null}
-        <button style={{
-            marginTop: "3rem",
-            marginleft: "0.7rem",
-            paddingLeft: "5px",
-            paddingRight: "5px"
-        }}
+        <button className="edit-button"
         onClick={() => { 
                 setIsEdited(!isEdited)
             }}

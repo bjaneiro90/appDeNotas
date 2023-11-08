@@ -51,12 +51,67 @@ div#root {
     padding: 8px;
     width: 100%;
     height: 4rem;
+    background-color: #f8f3f6;
     Border-Bottom: 1px solid black;
     align-items: center;
-    background-color: white;
     justify-content: space-between;
     position: fixed;
 }
+
+
+.backdrop-style {
+    position: absolute;
+    background-color: rgba(0,0,0,0.7);
+    width: 100%;
+    bottom: 0;
+    top: 4rem;
+}
+
+.ul-menu-profile-style {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    justify-content: space-around;
+    background-color:#f8f3f6;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    align-items: center;
+    border-bottom-left-radius: 15px;
+}
+
+.nav-menu-profile-style {
+    position: absolute;
+    right: 0;
+    top: 63px;
+    border: 1px solid black;
+    background-color: #f8f3f6;
+    border-bottom-left-radius: 15px;
+}
+
+.ul-menu-hamburguesa-style {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    justify-content: center;
+    background-color:#f8f3f6;
+}
+
+.nav-menu-hamburguesa-style {
+    position: absolute;
+    left: 0;
+    padding: 1rem;
+    top: 63px;
+    border: 1px solid black;
+    background-color: #f8f3f6;
+    border-bottom-right-radius: 15px;
+}
+
+
+.button-logout-style {
+    font-size: 25px;
+    align-items: center;
+}
+
 
 header > h1 {
     font-family: var(--body-font-family);
@@ -96,7 +151,7 @@ header > button {
 
 footer {
     display: flex;
-    background-color:white;
+    background-color: #f8f3f6;
     border-top: 0.3px solid black;
     text-align: center;
     font-size: 1.5rem;
@@ -106,6 +161,7 @@ footer {
     width: 100%;
     bottom: 0;
     justify-content: center;
+    opacity: 1;
 }
 
 h2 {
@@ -182,6 +238,19 @@ fieldset {
 }
 
 
+.delete-button {
+    margin-right: 0.7rem;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+
+.edit-button {
+    margin-top: 3rem;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
 .error-message-style {
     color: red;
     font-size: 22px;
@@ -219,3 +288,11 @@ fieldset {
     font-weight: bolder;
     font-size: 2rem;
 }
+
+.note-id-text-style{
+    font-size: 1.1rem;
+    font-style: italic;
+    margin-top: 0.2rem;
+    text-align: left;
+}
+
