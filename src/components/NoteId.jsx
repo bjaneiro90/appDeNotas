@@ -9,22 +9,13 @@ export const NoteId = ({note, isEdited, setIsEdited, removeNote, error}) => {
     console.log(note)
 
    
-    return ( <section style={{
-                       margin:"0.3rem"    
-    }}>
+    return ( <section>
 
-        <h3 style={{
-            color: "purple",
-            margin: "1rem"
-        }}
+        <h3 className="header-box-h3-style"
         >{note.title}</h3>
 
         {note.image ? (
-        <img 
-        style={{
-            width: "20rem",
-            borderRadius: "1rem"
-        }}
+        <img className="note-image-style"
         src={`${import.meta.env.VITE_APP_BACKEND}/uploads/${note.image}`} />
    ) : null}
 

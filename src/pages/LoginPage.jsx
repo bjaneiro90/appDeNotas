@@ -24,33 +24,15 @@ export const LoginPage = () => {
 
             navigate("/notes")
         } catch (error) {
-            setError(<p style={{color: "red",
-                                fontSize: "22px",
-                                fontStyle: "italic"                            
-        }}>Email or Password not correct. Please try again</p>)
+            setError(<p className="error-message-style">Email or Password not correct. Please try again</p>)
         }
     }
 
     return (
         <div className="box">
-        <section style={{
-            width: "100%",
-            backgroundColor: "rgba(194, 159, 182, 0.12)",
-            margin: "0",
-            padding: "1rem",
-            borderRadius: "5%",
-            marginTop: "5.5rem",
-            boxShadow: "0px 0px 2px 0.2px"
-        }}>
-            <header style={{
-                    margin: "0",
-                    borderBottom: "0.5px solid grey",
-                    paddingBottom: "0.5rem"
-            }}>
-                <h2 style={{
-                fontSize: "2rem",
-                marginTop: "0",
-        }}>Login</h2>
+        <section className="login-section">
+            <header className="header-box-style">
+                <h2 className="header-box-h2-style">Login</h2>
             </header>
             <form onSubmit={handleForm}>
                 <fieldset>
@@ -63,11 +45,7 @@ export const LoginPage = () => {
                 </fieldset>
             
 
-                <button style={{
-                    marginTop: "1rem",
-                    paddingLeft: "5px",
-                    paddingRight: "5px"
-                }}
+                <button className="style-button"
                 >Log in</button>
                 {error ? <p>{error}</p> : null}
             </form>

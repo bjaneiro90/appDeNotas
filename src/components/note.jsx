@@ -32,22 +32,14 @@ export const Note = ({note, removeNote}) => {
         }}>
             <Link to={`/notes/${note.id}`}> 
                 <p 
-                    style={{
-                        marginTop:"1rem",
-                        marginBottom:"0",
-                        fontWeight: "bolder",
-                        fontSize: "2rem"
-                    }}>
+                   className="link-note-id">
                 {note.title}</p>
             </Link>
 
                 <div>
                 <button
-                style={{
-                    paddingLeft: "5px",
-                    paddingRight: "5px"
-                }}
-                onClick={() => {if(window.confirm("Are you sure?")) removeNote(note.id, token)}}>Delete</button>
+                className="style-button"
+                onClick={() => {removeNote(note.id, token)}}>Delete</button>
                 {error ? <p>{error}</p> : null}
                 </div>
         </main>

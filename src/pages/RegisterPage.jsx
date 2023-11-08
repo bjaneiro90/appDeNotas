@@ -39,24 +39,9 @@ export const RegisterPage = () => {
  
     return (
         <div className="box">
-        <section style={{
-            width: "100%",
-            backgroundColor: "rgba(194, 159, 182, 0.12)",
-            margin: "0",
-            padding: "1rem",
-            borderRadius: "5%",
-            marginTop: "0.2rem",
-            boxShadow: "0px 0px 2px 0.2px"
-        }}>
-            <header style={{
-                    margin: "0",
-                    borderBottom: "0.5px solid grey",
-                    paddingBottom: "0.5rem"
-            }}>
-            <h2 style={{
-                fontSize: "2rem",
-                marginTop: "0",
-        }}>Registration</h2>
+        <section className="registration-section">
+            <header className="header-box-style">
+            <h2 className="header-box-h2-style">Registration</h2>
         </header>
             <form onSubmit={handleForm}>
             <fieldset>
@@ -80,11 +65,7 @@ export const RegisterPage = () => {
                     <input type="password" id="pass2" name="pass2" required onChange={(e) => setPass2(e.target.value)}/>
                 </fieldset>
 
-                <button style={{
-                    marginTop: "1rem",
-                    paddingLeft: "5px",
-                    paddingRight: "5px"
-                }}>Register</button>
+                <button className="style-button">Register</button>
                 {error ? <p>{error}</p> : null}
             </form>
         </section>
