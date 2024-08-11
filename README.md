@@ -1,8 +1,21 @@
-# React + Vite
+# appDeNotas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**appDeNotas** is a simple note-taking web application built with Vite.js and JavaScript. The goal of this project is to allow users to create, edit, and delete notes quickly and efficiently. This project serves as a base for learning how to build modern front-end applications using Vite.js.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Create new notes.
+- Edit existing notes.
+- Delete notes.
+
+## Technologies Used
+
+- **Vite.js**: A fast build tool for modern web applications.
+- **JavaScript (ES6+)**: The main programming language used for the project logic.
+- **HTML5 & CSS3**: For the structure and styling of the application.
+- **localStorage**: For persistent storage of notes in the browser.
+
+## Requirements
+
+- **Node.js** version 14 or higher must be installed on your system.
+
