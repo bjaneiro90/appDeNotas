@@ -12,8 +12,7 @@
 
 - **Vite.js**: A fast build tool for modern web applications.
 - **JavaScript (ES6+)**: The main programming language used for the project logic.
-- **HTML5 & CSS3**: For the structure and styling of the application.
-- **localStorage**: For persistent storage of notes in the browser.
+- **HTML5 & CSS3**: For the structure and styling of the application
 
 ## Requirements
 
